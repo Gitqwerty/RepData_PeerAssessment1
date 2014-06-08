@@ -9,7 +9,7 @@ act <- read.csv(unz("activity.zip", "activity.csv"), colClasses = c("numeric", "
 
 
 ## What is mean total number of steps taken per day?
-```{r fig.height=8, fig.width=6}
+```{r TotalStepsHistogram, fig.height=8, fig.width=6}
 total <- aggregate(act$steps, by=list(act$date), FUN=sum)
 
 hist(total$x, xlab="Number of steps in a day", main="Total number of steps taken each day", labels=TRUE)
@@ -19,7 +19,7 @@ median(total$x, na.rm=TRUE)
 
 
 ## What is the average daily activity pattern?
-```{r}
+```{r AverageDailyStepsByInterval}
 inter <- aggregate(act$steps, by=list(act$interval), FUN=mean, na.rm=TRUE)
 plot(inter$Group.1, inter$x, type="l", xlab="Time Interval", ylab="Average Number of Steps in Interval", main="Average Steps per Time Interval")
 ```
@@ -53,7 +53,7 @@ for (i in 1:length(filled$steps)) {
 ```
 
 The following creates a new histogram that includes the filled in data and finds the mean and median
-```{r fig.height=8, fig.width=6}
+```{r TotalStepsHistogramFilled, fig.height=8, fig.width=6}
 total2 <- aggregate(filled$steps, by=list(filled$date), FUN=sum)
 hist(total2$x, xlab="Number of steps in a day", main="Total number of steps taken each day", labels=TRUE)
 mean(total2$x)
@@ -79,7 +79,7 @@ levels(actDay$day) <- list(weekend="Saturday", weekend="Sunday", weekday="Monday
 ```
 
 The following finds the average steps per day, and then plots the results, one plot for weekend and the other for weekdays.
-```{r fig.height=8, fig.width=6}
+```{r WeekendvsWeekdayMeanSteps, fig.height=8, fig.width=6}
 internew <- aggregate(actDay$steps, by=list(actDay$interval, actDay$day), FUN=mean)
 
 par(mfrow=c(2,1))

@@ -17,7 +17,7 @@ total <- aggregate(act$steps, by=list(act$date), FUN=sum)
 hist(total$x, xlab="Number of steps in a day", main="Total number of steps taken each day", labels=TRUE)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk TotalStepsHistogram](figure/TotalStepsHistogram.png) 
 
 ```r
 mean(total$x, na.rm=TRUE)
@@ -43,7 +43,7 @@ inter <- aggregate(act$steps, by=list(act$interval), FUN=mean, na.rm=TRUE)
 plot(inter$Group.1, inter$x, type="l", xlab="Time Interval", ylab="Average Number of Steps in Interval", main="Average Steps per Time Interval")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+![plot of chunk AverageDailyStepsByInterval](figure/AverageDailyStepsByInterval.png) 
 
 The following finds the interval, which on average, has the maximum number of steps.
 
@@ -92,7 +92,7 @@ total2 <- aggregate(filled$steps, by=list(filled$date), FUN=sum)
 hist(total2$x, xlab="Number of steps in a day", main="Total number of steps taken each day", labels=TRUE)
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+![plot of chunk TotalStepsHistogramFilled](figure/TotalStepsHistogramFilled.png) 
 
 ```r
 mean(total2$x)
@@ -146,5 +146,5 @@ plot(internew$Group.1[which(internew$Group.2=="weekend")], internew$x[which(inte
 plot(internew$Group.1[which(internew$Group.2=="weekday")], internew$x[which(internew$Group.2=="weekday")], type="l", xlab="Time Interval", ylab="Average Number of Steps in Interval", main="Weekday Average Steps per Time Interval")
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
+![plot of chunk WeekendvsWeekdayMeanSteps](figure/WeekendvsWeekdayMeanSteps.png) 
 By examining the charts, it does seem there is more activity on the weekends.
